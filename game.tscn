@@ -43,6 +43,7 @@ can_sleep = false
 freeze = true
 
 [node name="base" parent="construction" instance=ExtResource("3_i402q")]
+position = Vector2(0, -192)
 
 [node name="gameCamera" type="Camera2D" parent="."]
 scale = Vector2(1.5, 1.5)

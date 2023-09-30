@@ -1,3 +1,66 @@
-[gd_scene format=3 uid="uid://cobs8sssfhu2c"]
+[gd_scene load_steps=11 format=3 uid="uid://cobs8sssfhu2c"]
+
+[ext_resource type="Script" path="res://base.gd" id="1_d37pl"]
+[ext_resource type="Texture2D" uid="uid://cvofj5p1h7k1j" path="res://textures/base/base1.png" id="1_hagnp"]
+[ext_resource type="Texture2D" uid="uid://cyhu1afgxr4ga" path="res://textures/base/base2.png" id="2_6xa3d"]
+[ext_resource type="Texture2D" uid="uid://ct1ktbb3ba4co" path="res://textures/base/base3.png" id="3_dqm4x"]
+[ext_resource type="Texture2D" uid="uid://d0tli8dbti28d" path="res://textures/base/kupol1.png" id="4_54usl"]
+[ext_resource type="Texture2D" uid="uid://b1naby7u6tc5w" path="res://textures/base/kupol2.png" id="5_aivrl"]
+[ext_resource type="Texture2D" uid="uid://tj2alc8on3eg" path="res://textures/base/kupol3.png" id="6_pkvgb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ckxop"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hagnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6xa3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dqm4x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71drg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_54usl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_aivrl")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_pkvgb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srpin"]
+size = Vector2(192, 192)
 
 [node name="base" type="RigidBody2D"]
+can_sleep = false
+freeze = true
+script = ExtResource("1_d37pl")
+
+[node name="base" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 32)
+sprite_frames = SubResource("SpriteFrames_ckxop")
+autoplay = "default"
+frame_progress = 0.552846
+
+[node name="kupol" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 32)
+sprite_frames = SubResource("SpriteFrames_71drg")
+frame_progress = 0.408151
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_srpin")
