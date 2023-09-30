@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://m71xfhea5hkn"]
+
+[ext_resource type="Script" path="res://scenes/stone.gd" id="1_5dwov"]
+[ext_resource type="Texture2D" uid="uid://hkuxr6lov3af" path="res://textures/constr/big_stone.png" id="1_hl8jj"]
+[ext_resource type="PackedScene" uid="uid://ck37gt6lykv3a" path="res://scenes/mine.tscn" id="2_lgjq8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_prkrn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hl8jj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r017"]
+size = Vector2(128, 128)
+
+[node name="stone" type="RigidBody2D"]
+script = ExtResource("1_5dwov")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_prkrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1r017")
+
+[node name="mine" parent="." instance=ExtResource("2_lgjq8")]
+visible = false
+position = Vector2(-10, 17)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="." to="." method="_on_mouse_shape_exited"]

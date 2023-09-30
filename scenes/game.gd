@@ -8,7 +8,6 @@ func _ready():
 
 
 func _process(delta):
-	pass
 #	if Input.is_action_just_pressed("exit"):
 #		var pauseMode = not get_tree().paused
 #		get_tree().paused = pauseMode

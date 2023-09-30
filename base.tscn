@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cobs8sssfhu2c"]
+
+[node name="base" type="RigidBody2D"]
