@@ -59,8 +59,6 @@ frame_progress = 0.552846
 [node name="kupol" type="AnimatedSprite2D" parent="."]
 position = Vector2(32, 32)
 sprite_frames = SubResource("SpriteFrames_71drg")
-frame = 2
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(32, 32)

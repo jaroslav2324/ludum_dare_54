@@ -9,7 +9,7 @@ signal spell_mine_stone_btn_unpressed_sig
 func _ready():
 	# test
 	# print("A")
-	# spell_mine_stone_btn_pressed_sig.emit()
+	spell_mine_stone_btn_pressed_sig.emit()
 	
 	connect("spell_mine_stone_btn_pressed_sig", _on_spell_mine_stone_btn_pressed_sig)
 	connect("spell_mine_stone_btn_unpressed_sig", _on_spell_mine_stone_btn_unpressed_sig)
