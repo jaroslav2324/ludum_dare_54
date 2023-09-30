@@ -1,5 +1,6 @@
 extends Control
 
+# useless ?
 signal asd 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +14,7 @@ func _process(delta):
 		var pauseMode = not get_tree().paused
 		get_tree().paused = pauseMode
 		visible = pauseMode
-		print(pauseMode)
+		# print("Game paused: ", pauseMode)
 #	if Input.is_action_just_pressed("exit"):
 #		get_tree().paused = not get_tree().paused
 
@@ -22,7 +23,7 @@ func _on_continue_button_down():
 	var pauseMode = not get_tree().paused
 	get_tree().paused = pauseMode
 	visible = pauseMode
-	print(pauseMode)
+	# print("Game paused: ", pauseMode)
 
 
 func _on_exit_button_down():

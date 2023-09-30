@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cobs8sssfhu2c"]
+[gd_scene load_steps=11 format=3 uid="uid://cifadxyiqg3g2"]
 
 [ext_resource type="Script" path="res://base.gd" id="1_d37pl"]
 [ext_resource type="Texture2D" uid="uid://cvofj5p1h7k1j" path="res://textures/base/base1.png" id="1_hagnp"]
@@ -59,7 +59,8 @@ frame_progress = 0.552846
 [node name="kupol" type="AnimatedSprite2D" parent="."]
 position = Vector2(32, 32)
 sprite_frames = SubResource("SpriteFrames_71drg")
-frame_progress = 0.408151
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(32, 32)

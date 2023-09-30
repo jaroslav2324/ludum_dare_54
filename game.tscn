@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b0v8gmxasw5im" path="res://textures/tiles/grassTiles.png" id="1_ixt1y"]
 [ext_resource type="PackedScene" uid="uid://m71xfhea5hkn" path="res://scenes/stone.tscn" id="3_bxnxp"]
-[ext_resource type="PackedScene" uid="uid://cobs8sssfhu2c" path="res://base.tscn" id="3_i402q"]
+[ext_resource type="PackedScene" uid="uid://cifadxyiqg3g2" path="res://base.tscn" id="3_i402q"]
 [ext_resource type="Script" path="res://scenes/gameCamera.gd" id="5_1s1ur"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxc20"]
@@ -39,11 +39,14 @@ layer_0/tile_data = PackedInt32Array(-196613, 196613, 0, -131077, 131077, 0, -65
 process_priority = 1
 z_index = 1
 position = Vector2(192, 64)
-can_sleep = false
-freeze = true
 
 [node name="base" parent="construction" instance=ExtResource("3_i402q")]
 position = Vector2(0, -192)
+
+[node name="stone2" parent="construction" instance=ExtResource("3_bxnxp")]
+process_priority = 1
+z_index = 1
+position = Vector2(384, -192)
 
 [node name="gameCamera" type="Camera2D" parent="."]
 scale = Vector2(1.5, 1.5)
