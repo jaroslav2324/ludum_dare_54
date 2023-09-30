@@ -63,3 +63,5 @@ sprite_frames = SubResource("SpriteFrames_71drg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_srpin")
+
+[connection signal="animation_finished" from="kupol" to="." method="_on_kupol_animation_finished"]

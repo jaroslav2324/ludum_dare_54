@@ -4,6 +4,8 @@ var is_mouse_hovered = false
 var spell_cast_btn_pressed = false
 
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# for proper mouse handling
@@ -27,6 +29,7 @@ func _process(delta):
 		#var player2_node = get_node("mine/AudioStreamPlayer2D2")
 		#player2_node.play()
 		get_node("../../").spell_mine_stone_btn_unpressed_sig.emit()
+		get_node("../../").play_kupol_anim_sig.emit()
 		$mine.visible = true
 	# if Input.is_action_just_pressed("left") and is_mouse_hovered:
 	# 	print("on stone clicked")

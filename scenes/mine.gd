@@ -18,4 +18,11 @@ func _on_animated_sprite_2d_animation_looped():
 
 func _on_animated_sprite_2d_2_animation_looped():
 	if is_visible():
-		$AudioStreamPlayer2D2.play()
+		$Timer.start(0.1)
+		
+
+
+func _on_timer_timeout():
+	$AudioStreamPlayer2D2.play()
+	
+
