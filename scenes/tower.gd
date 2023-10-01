@@ -7,7 +7,7 @@ extends RigidBody2D
 func _ready():
 	input_pickable = true
 	var radius_scale: Vector2 = Vector2(attack_radius / 256.0, attack_radius / 256.0)
-	print("rad scale ", radius_scale)
+	# print("rad scale ", radius_scale)
 	$radiusSprite.apply_scale(radius_scale)
 	pass # Replace with function body.
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://e6sp7jrrjl8f"]
+[gd_scene load_steps=10 format=3 uid="uid://e6sp7jrrjl8f"]
 
 [ext_resource type="Texture2D" uid="uid://b0v8gmxasw5im" path="res://textures/tiles/grassTiles.png" id="1_ixt1y"]
 [ext_resource type="PackedScene" uid="uid://8fil2wgn2sl2" path="res://scenes/enemy.tscn" id="2_ktu4m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cifadxyiqg3g2" path="res://base.tscn" id="3_i402q"]
 [ext_resource type="Script" path="res://scenes/gameCamera.gd" id="5_1s1ur"]
 [ext_resource type="PackedScene" uid="uid://08savjyv0y8v" path="res://scenes/tower.tscn" id="5_jrybt"]
+[ext_resource type="PackedScene" uid="uid://cuq6u2tjmg56" path="res://scenes/tower_magic.tscn" id="6_wgrxe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxc20"]
 texture = ExtResource("1_ixt1y")
@@ -55,6 +56,9 @@ position = Vector2(384, -192)
 
 [node name="Tower" parent="construction" instance=ExtResource("5_jrybt")]
 position = Vector2(-320, -64)
+
+[node name="TowerMagic" parent="construction" instance=ExtResource("6_wgrxe")]
+position = Vector2(-192, 192)
 
 [node name="gameCamera" type="Camera2D" parent="."]
 scale = Vector2(1.5, 1.5)
