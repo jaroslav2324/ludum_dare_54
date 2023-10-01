@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0ejxu0osx5vr"]
+[gd_scene load_steps=7 format=3 uid="uid://c0ejxu0osx5vr"]
 
 [ext_resource type="PackedScene" uid="uid://e6sp7jrrjl8f" path="res://game.tscn" id="1_3hwem"]
 [ext_resource type="PackedScene" uid="uid://cw2pbvjr2acl3" path="res://scenes/menu.tscn" id="1_5urwu"]
 [ext_resource type="Script" path="res://scenes/main_scene.gd" id="1_nweo8"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="2_gjvdn"]
+[ext_resource type="AudioStream" uid="uid://ewduxyvi5nvy" path="res://sounds/ambient.wav" id="4_5ide7"]
 [ext_resource type="PackedScene" uid="uid://dq0fe07aj438b" path="res://scenes/interface.tscn" id="5_4fssk"]
 
 [node name="mainScene" type="Node2D"]
@@ -11,6 +12,10 @@ script = ExtResource("1_nweo8")
 
 [node name="game" parent="." instance=ExtResource("1_3hwem")]
 script = ExtResource("2_gjvdn")
+
+[node name="ambientPlayer" type="AudioStreamPlayer" parent="game"]
+stream = ExtResource("4_5ide7")
+autoplay = true
 
 [node name="menu" parent="." instance=ExtResource("1_5urwu")]
 process_mode = 3
@@ -28,6 +33,7 @@ offset_right = 960.0
 offset_bottom = 490.0
 
 [connection signal="currency" from="game" to="interface" method="_on_game_currency"]
+[connection signal="finished" from="game/ambientPlayer" to="game" method="_on_ambient_player_finished"]
 [connection signal="magicTowerToggled" from="interface" to="." method="_on_interface_magic_tower_toggled"]
 [connection signal="mineToggled" from="interface" to="." method="_on_interface_mine_toggled"]
 [connection signal="towerToggled" from="interface" to="." method="_on_interface_tower_toggled"]

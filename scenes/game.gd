@@ -55,3 +55,8 @@ func magicTowerSpawn(pos):
 	print("position ",instance.position)
 	add_child(instance)
 	pass
+
+
+func _on_ambient_player_finished():
+	$ambientPlayer.play()
+	pass 
