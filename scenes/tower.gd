@@ -46,12 +46,7 @@ func _on_radius_body_entered(body):
 		print("Fire! ", get_global_position())
 		aimed_target = true
 		target = body
-		var instance = ball.instantiate()
-		instance.position = get_global_position()
-		instance.look_at(body.position)
-		#instance.rotation = body.look_at()
-		add_child(instance)
-		instance.apply_central_impulse(Vector2(2000,0).rotated(rotation))
+		fire()
 		$attackPlayer.play()
 		target.apply_damage(tower_damage)
 		$radius/damageTimer.start(tower_attack_speed)
@@ -73,4 +68,16 @@ func _on_radius_body_exited(body):
 func _on_damage_timer_timeout():
 	$attackPlayer.play()
 	target.apply_damage(tower_damage)
+	fire()
 	pass # Replace with function body.
+
+func fire():
+	var instance = ball.instantiate()
+	instance.position = get_global_position()
+	print("instance.position", instance.position)
+	print("instance.rotation beg", instance.rotation)
+	var a = instance.position - target.position
+	instance.rotation = a.angle() + PI
+	add_child(instance)
+	print("instance.rotation", instance.rotation)
+	instance.apply_central_impulse(Vector2(500,0).rotated(instance.rotation))
