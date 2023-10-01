@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://08savjyv0y8v"]
+[gd_scene load_steps=11 format=3 uid="uid://08savjyv0y8v"]
 
+[ext_resource type="Script" path="res://scenes/tower.gd" id="1_pwjn1"]
 [ext_resource type="Texture2D" uid="uid://p06ef7ug321k" path="res://textures/tower/towerIdle-Sheet.png" id="1_u6cj4"]
 [ext_resource type="Texture2D" uid="uid://c68hj7010dq6g" path="res://textures/tower/towerFire.png" id="2_le3lc"]
+[ext_resource type="Texture2D" uid="uid://fxaqakqum3p0" path="res://textures/attackRad.png" id="4_1lwpg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6fba"]
 atlas = ExtResource("1_u6cj4")
@@ -49,6 +51,7 @@ size = Vector2(136, 134.5)
 
 [node name="Tower" type="RigidBody2D"]
 gravity_scale = 0.0
+script = ExtResource("1_pwjn1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v2m48")
@@ -57,3 +60,10 @@ animation = &"fire"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -0.75)
 shape = SubResource("RectangleShape2D_fuqtg")
+
+[node name="radiusSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_1lwpg")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

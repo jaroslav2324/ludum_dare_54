@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cuq6u2tjmg56"]
+[gd_scene load_steps=20 format=3 uid="uid://cuq6u2tjmg56"]
 
 [ext_resource type="Texture2D" uid="uid://cgsopr4mnhvlr" path="res://textures/tower_magic/magikTowerIdle-Sheet.png" id="1_bp2na"]
+[ext_resource type="Script" path="res://scenes/tower_magic.gd" id="1_e5uuy"]
 [ext_resource type="Texture2D" uid="uid://cxw3j5o6vaq5g" path="res://textures/tower_magic/magikTowerFire.png" id="2_5itmv"]
 [ext_resource type="Texture2D" uid="uid://c17i0o311k0op" path="res://textures/tower_magic/magikTowerSpawn-Sheet.png" id="3_j06kd"]
 
@@ -118,6 +119,7 @@ size = Vector2(134, 135)
 
 [node name="RigidBody2D" type="RigidBody2D"]
 gravity_scale = 0.0
+script = ExtResource("1_e5uuy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wdq0y")
