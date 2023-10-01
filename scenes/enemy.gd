@@ -56,6 +56,7 @@ func apply_damage(damage: float):
 	print("Farmer recieved damage ", damage, ", current hp = ", farmer_hp)
 	if farmer_hp <= 0:
 		farmer_dead = true
+		$deadSoundPlayer.play()
 		$AnimatedSprite2D.play("dead_burst")
 		dead_animation_playing = true
 
@@ -84,6 +85,7 @@ func _on_timer_attack_timeout():
 func _on_animated_sprite_2d_animation_finished():
 	if dead_animation_playing:
 		# hide()
+		
 		queue_free()
 	pass # Replace with function body.
 
