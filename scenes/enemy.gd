@@ -3,6 +3,7 @@ extends RigidBody2D
 @export var speed : int = 1
 @export var farmer_damage: float = 1
 @export var farmer_attack_speed: float = 0.5
+@export var farmer_hp: float = 10
 
 
 var reached_base = false
@@ -27,7 +28,7 @@ func _process(delta):
 		var collision = move_and_collide(direction_vector * speed * delta)
 		if collision != null:
 			var collider_name: String = collision.get_collider().name
-			print("enemy collided with ", collider_name)
+			# print("enemy collided with ", collider_name)
 			if collider_name == "base":
 				reached_base = true
 				$TimerAttack.start(farmer_attack_speed)
@@ -45,6 +46,9 @@ func _process(delta):
 	pass
 
 
+func apply_damage(damage: float):
+	farmer_hp -= damage
+	print("Farmer recieved damage ", damage, ", current hp = ", farmer_hp)
 
 
 func _on_body_entered(body):
@@ -53,10 +57,10 @@ func _on_body_entered(body):
 
 
 func _on_timer_attack_timeout():
-	print("Dealed damage to base ", farmer_damage)
+	# print("Dealed damage to base ", farmer_damage)
 	var base = get_node("../../construction/base")
 	base.base_hp -= farmer_damage
-	print("New base hp ", base.base_hp)
+	# print("New base hp ", base.base_hp)
 	if base.base_hp <= 0:
 		$TimerAttack.stop()
 		if (position.x < 0):

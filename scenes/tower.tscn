@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://08savjyv0y8v"]
+[gd_scene load_steps=12 format=3 uid="uid://08savjyv0y8v"]
 
 [ext_resource type="Script" path="res://scenes/tower.gd" id="1_pwjn1"]
 [ext_resource type="Texture2D" uid="uid://p06ef7ug321k" path="res://textures/tower/towerIdle-Sheet.png" id="1_u6cj4"]
@@ -49,6 +49,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuqtg"]
 size = Vector2(136, 134.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a166d"]
+radius = 128.141
+
 [node name="Tower" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("1_pwjn1")
@@ -61,9 +64,19 @@ animation = &"fire"
 position = Vector2(1, -0.75)
 shape = SubResource("RectangleShape2D_fuqtg")
 
-[node name="radiusSprite" type="Sprite2D" parent="."]
+[node name="radius" type="Area2D" parent="."]
+
+[node name="radiusSprite" type="Sprite2D" parent="radius"]
 visible = false
 texture = ExtResource("4_1lwpg")
 
+[node name="radiusCollisionShape" type="CollisionShape2D" parent="radius"]
+shape = SubResource("CircleShape2D_a166d")
+
+[node name="damageTimer" type="Timer" parent="radius"]
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="body_entered" from="radius" to="." method="_on_radius_body_entered"]
+[connection signal="body_exited" from="radius" to="." method="_on_radius_body_exited"]
+[connection signal="timeout" from="radius/damageTimer" to="." method="_on_damage_timer_timeout"]
