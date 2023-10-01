@@ -68,3 +68,9 @@ func realTowerSpawn(pos):
 	print("position ",instance.position)
 	add_child(instance)
 	coins -= realTowerPrice
+	pass
+
+
+func _on_ambient_player_finished():
+	$ambientPlayer.play()
+	pass 
