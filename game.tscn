@@ -40,9 +40,9 @@ script = ExtResource("2_lhvhl")
 
 [node name="Enemy" parent="enemyContainer" instance=ExtResource("2_ktu4m")]
 position = Vector2(-448, -320)
-collision_layer = 2
 
 [node name="spawnTimer" type="Timer" parent="enemyContainer"]
+process_mode = 4
 wait_time = 5.0
 
 [node name="construction" type="Node2D" parent="."]

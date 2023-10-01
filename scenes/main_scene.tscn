@@ -26,3 +26,7 @@ offset_left = -960.0
 offset_top = 300.0
 offset_right = 960.0
 offset_bottom = 490.0
+
+[connection signal="currency" from="game" to="interface" method="_on_game_currency"]
+[connection signal="mineButton" from="interface" to="." method="_on_interface_mine_button"]
+[connection signal="mineButtonNo" from="interface" to="." method="_on_interface_mine_button_no"]

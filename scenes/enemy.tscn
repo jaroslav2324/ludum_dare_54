@@ -180,6 +180,7 @@ animations = [{
 size = Vector2(64, 66)
 
 [node name="Enemy" type="RigidBody2D" groups=["enemies"]]
+collision_layer = 2
 gravity_scale = 0.0
 script = ExtResource("1_f1vui")
 

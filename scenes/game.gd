@@ -6,17 +6,26 @@ signal spell_mine_stone_btn_pressed_sig
 signal spell_mine_stone_btn_unpressed_sig
 signal play_kupol_anim_sig
 
+signal currency(coins, manna)
+
+var beginCoins = 20
+var beginManna = 100
+
+var coins = beginCoins
+var manna = beginManna
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# test
 	# print("A")
-	spell_mine_stone_btn_pressed_sig.emit()
-	
+	#spell_mine_stone_btn_pressed_sig.emit()
+#
 	connect("spell_mine_stone_btn_pressed_sig", _on_spell_mine_stone_btn_pressed_sig)
 	connect("spell_mine_stone_btn_unpressed_sig", _on_spell_mine_stone_btn_unpressed_sig)
 	connect("play_kupol_anim_sig", _on_play_kupol_anim_sig)
 
 func _process(delta):
+	emit_signal("currency", coins, manna)
 	pass
 
 func _on_spell_mine_stone_btn_pressed_sig():
