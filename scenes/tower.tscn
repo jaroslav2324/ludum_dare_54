@@ -47,7 +47,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuqtg"]
-size = Vector2(136, 134.5)
+size = Vector2(114, 109)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a166d"]
 radius = 128.141
@@ -61,7 +61,7 @@ sprite_frames = SubResource("SpriteFrames_v2m48")
 animation = &"fire"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -0.75)
+position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_fuqtg")
 
 [node name="radius" type="Area2D" parent="."]

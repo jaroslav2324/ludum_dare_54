@@ -2,10 +2,11 @@ extends Node2D
 
 
 var enemy_scene = preload("res://scenes/enemy.tscn")
+var spawn_rate = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$spawnTimer.start(5)
+	$spawnTimer.start(spawn_rate)
 	pass # Replace with function body.
 
 

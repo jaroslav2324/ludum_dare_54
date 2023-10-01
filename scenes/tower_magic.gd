@@ -10,6 +10,8 @@ var aimed_target = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CollisionShape2D.disabled = true
+	
 	input_pickable = true
 	contact_monitor = true
 	var radius_scale: Vector2 = Vector2(attack_radius / 256.0, attack_radius / 256.0)
