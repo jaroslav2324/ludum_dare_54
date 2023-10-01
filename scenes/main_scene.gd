@@ -10,4 +10,4 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("exit"):
 		get_node("menu").position =  get_node("game/gameCamera").position
-	get_node("interface").position = get_node("game/gameCamera").position - Vector2(960, -250)
+	get_node("interface").position = get_node("game/gameCamera").position - Vector2(958, -298)
