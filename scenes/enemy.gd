@@ -57,4 +57,12 @@ func _on_timer_attack_timeout():
 	var base = get_node("../../construction/base")
 	base.base_hp -= farmer_damage
 	print("New base hp ", base.base_hp)
+	if base.base_hp <= 0:
+		$TimerAttack.stop()
+		if (position.x < 0):
+			$AnimatedSprite2D.play("go_right")
+		else:
+			$AnimatedSprite2D.play("go_left")
+		$AnimatedSprite2D.set_frame_and_progress(0, 0)
+		$AnimatedSprite2D.stop()
 	pass # Replace with function body.
