@@ -14,6 +14,10 @@ var beginManna = 100
 var coins = beginCoins
 var manna = beginManna
 
+var magicTowerCanSpawn = false
+var realTowerCanSpawn = false
+var magicTower = preload("res://scenes/tower_magic.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# test
@@ -27,6 +31,9 @@ func _ready():
 func _process(delta):
 	emit_signal("currency", coins, manna)
 	$icons.position = get_global_mouse_position()
+	
+	if magicTowerCanSpawn and Input.is_action_just_pressed("left"):
+		magicTowerSpawn(get_global_mouse_position())
 	pass
 
 func _on_spell_mine_stone_btn_pressed_sig():
@@ -40,3 +47,11 @@ func _on_spell_mine_stone_btn_unpressed_sig():
 	
 func _on_play_kupol_anim_sig():
 	get_node("construction/base/kupol").play()
+	
+func magicTowerSpawn(pos):
+	print("try spawn magic tower")
+	var instance = magicTower.instantiate()
+	instance.position = Vector2(floor(pos.x/64)*64, floor(pos.y/64)*64)
+	print("position ",instance.position)
+	add_child(instance)
+	pass
