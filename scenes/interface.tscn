@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq0fe07aj438b"]
+
+[ext_resource type="Script" path="res://scenes/interface.gd" id="1_hyo4u"]
+
+[node name="interface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 980.0
+offset_bottom = 137.0
+script = ExtResource("1_hyo4u")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 940.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="magicTower" type="CheckButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -95.0
+offset_right = 190.0
+offset_bottom = 95.0
+grow_vertical = 2
+
+[node name="mine" type="CheckButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 190.0
+offset_top = -94.5
+offset_right = 380.0
+offset_bottom = 95.5
+grow_vertical = 2
+
+[node name="realTowe" type="CheckButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 380.0
+offset_top = -94.5
+offset_right = 570.0
+offset_bottom = 95.5
+grow_vertical = 2
