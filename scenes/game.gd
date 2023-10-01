@@ -8,7 +8,7 @@ signal play_kupol_anim_sig
 
 signal currency(coins, manna)
 
-var beginCoins = 100
+var beginCoins = 20
 var beginManna = 100
 
 var coins = beginCoins
@@ -18,8 +18,8 @@ var manna = beginManna
 func _ready():
 	# test
 	# print("A")
-	spell_mine_stone_btn_pressed_sig.emit()
-	
+	#spell_mine_stone_btn_pressed_sig.emit()
+#
 	connect("spell_mine_stone_btn_pressed_sig", _on_spell_mine_stone_btn_pressed_sig)
 	connect("spell_mine_stone_btn_unpressed_sig", _on_spell_mine_stone_btn_unpressed_sig)
 	connect("play_kupol_anim_sig", _on_play_kupol_anim_sig)

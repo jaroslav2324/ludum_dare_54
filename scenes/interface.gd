@@ -1,6 +1,7 @@
 extends Control
 
 signal mineButton
+signal mineButtonNo
 
 var Coins
 var Manna
@@ -25,3 +26,8 @@ func _on_mine_button_down():
 func _on_game_currency(coins, manna):
 	Coins = coins
 	Manna = manna
+
+
+func _on_mine_button_up():
+	emit_signal("mineButtonNo")
+	print("mine button click")

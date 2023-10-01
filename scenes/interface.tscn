@@ -121,3 +121,4 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_2r32a")
 value = 20.0
 
 [connection signal="button_down" from="Panel/mine" to="." method="_on_mine_button_down"]
+[connection signal="button_up" from="Panel/mine" to="." method="_on_mine_button_up"]
