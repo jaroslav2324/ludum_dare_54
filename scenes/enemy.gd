@@ -7,6 +7,8 @@ extends RigidBody2D
 
 
 var reached_base = false
+var farmer_dead = false
+var dead_animation_playing = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +21,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
+	if farmer_dead:
+		return
+		
 	var  direction_vector: Vector2
 	if not reached_base:
 		
@@ -49,6 +54,10 @@ func _process(delta):
 func apply_damage(damage: float):
 	farmer_hp -= damage
 	print("Farmer recieved damage ", damage, ", current hp = ", farmer_hp)
+	if farmer_hp <= 0:
+		farmer_dead = true
+		$AnimatedSprite2D.play("dead_burst")
+		dead_animation_playing = true
 
 
 func _on_body_entered(body):
@@ -70,3 +79,11 @@ func _on_timer_attack_timeout():
 		$AnimatedSprite2D.set_frame_and_progress(0, 0)
 		$AnimatedSprite2D.stop()
 	pass # Replace with function body.
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if dead_animation_playing:
+		# hide()
+		queue_free()
+	pass # Replace with function body.
+
