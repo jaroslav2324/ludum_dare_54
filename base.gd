@@ -14,6 +14,8 @@ func _ready():
 func _process(delta):
 	if base_hp <= 0 and print_base_dead:
 		print_base_dead = false
+		$kupol.hide()
+		$base.play("destroyed")
 		print("Base dead")
 	pass
 
