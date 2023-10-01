@@ -69,6 +69,7 @@ func _on_body_entered(body):
 
 func _on_timer_attack_timeout():
 	# print("Dealed damage to base ", farmer_damage)
+	$dealDamagePlayer.play()
 	var base = get_node("../../construction/base")
 	base.base_hp -= farmer_damage
 	# print("New base hp ", base.base_hp)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://08savjyv0y8v"]
+[gd_scene load_steps=13 format=3 uid="uid://08savjyv0y8v"]
 
 [ext_resource type="Script" path="res://scenes/tower.gd" id="1_pwjn1"]
 [ext_resource type="Texture2D" uid="uid://p06ef7ug321k" path="res://textures/tower/towerIdle-Sheet.png" id="1_u6cj4"]
 [ext_resource type="Texture2D" uid="uid://c68hj7010dq6g" path="res://textures/tower/towerFire.png" id="2_le3lc"]
 [ext_resource type="Texture2D" uid="uid://fxaqakqum3p0" path="res://textures/attackRad.png" id="4_1lwpg"]
+[ext_resource type="AudioStream" uid="uid://dpv43wi61qctt" path="res://sounds/tower_attack.wav" id="5_fmfy6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6fba"]
 atlas = ExtResource("1_u6cj4")
@@ -74,6 +75,9 @@ texture = ExtResource("4_1lwpg")
 shape = SubResource("CircleShape2D_a166d")
 
 [node name="damageTimer" type="Timer" parent="radius"]
+
+[node name="attackPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fmfy6")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

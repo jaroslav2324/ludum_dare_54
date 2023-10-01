@@ -42,6 +42,7 @@ func _on_radius_body_entered(body):
 	if body.is_in_group("enemies") and not aimed_target:
 		aimed_target = true
 		target = body
+		$attackPlayer.play()
 		target.apply_damage(tower_damage)
 		$radius/damageTimer.start(tower_attack_speed)
 	pass # Replace with function body.
@@ -56,5 +57,6 @@ func _on_radius_body_exited(body):
 
 
 func _on_damage_timer_timeout():
+	$attackPlayer.play()
 	target.apply_damage(tower_damage)
 	pass # Replace with function body.
