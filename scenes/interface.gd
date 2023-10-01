@@ -2,6 +2,7 @@ extends Control
 
 signal mineToggled(buttonPresed)
 signal magicTowerToggled(buttonPresed)
+signal towerToggled(buttonPresed)
 
 var Coins
 var Manna
@@ -24,7 +25,19 @@ func _on_game_currency(coins, manna):
 
 func _on_mine_toggled(button_pressed):
 	emit_signal("mineToggled", button_pressed)
+	$Panel/magicTower.button_pressed = false
+	$Panel/realTowe.button_pressed = false
+
 
 
 func _on_magic_tower_toggled(button_pressed):
 	emit_signal("magicTowerToggled", button_pressed)
+	$Panel/realTowe.button_pressed = false
+	$Panel/mine.button_pressed = false
+	
+
+func _on_real_towe_toggled(button_pressed):
+	emit_signal("towerToggled", button_pressed)
+	$Panel/magicTower.button_pressed = false
+	$Panel/mine.button_pressed = false
+	

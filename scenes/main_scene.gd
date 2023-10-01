@@ -24,6 +24,13 @@ func _on_interface_mine_toggled(buttonPresed):
 
 func _on_interface_magic_tower_toggled(buttonPresed):
 	if buttonPresed:
-		pass
+		get_node("game/icons/magicTowerIcon").visible = true
 	if !buttonPresed:
-		pass
+		get_node("game/icons/magicTowerIcon").visible = false
+
+
+func _on_interface_tower_toggled(buttonPresed):
+	if buttonPresed:
+		get_node("game/icons/towerIcon").visible = true
+	if !buttonPresed:
+		get_node("game/icons/towerIcon").visible = false

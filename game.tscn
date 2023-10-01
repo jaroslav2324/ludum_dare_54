@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://e6sp7jrrjl8f"]
+[gd_scene load_steps=14 format=3 uid="uid://e6sp7jrrjl8f"]
 
 [ext_resource type="Texture2D" uid="uid://b0v8gmxasw5im" path="res://textures/tiles/grassTiles.png" id="1_ixt1y"]
 [ext_resource type="PackedScene" uid="uid://8fil2wgn2sl2" path="res://scenes/enemy.tscn" id="2_ktu4m"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://08savjyv0y8v" path="res://scenes/tower.tscn" id="5_jrybt"]
 [ext_resource type="PackedScene" uid="uid://cuq6u2tjmg56" path="res://scenes/tower_magic.tscn" id="6_wgrxe"]
 [ext_resource type="Texture2D" uid="uid://3jhp681vjk8c" path="res://textures/magic/pixIcon.png" id="9_jtrot"]
+[ext_resource type="Texture2D" uid="uid://cxw3j5o6vaq5g" path="res://textures/tower_magic/magikTowerFire.png" id="10_wf1kv"]
+[ext_resource type="Texture2D" uid="uid://c68hj7010dq6g" path="res://textures/tower/towerFire.png" id="11_7jm18"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxc20"]
 texture = ExtResource("1_ixt1y")
@@ -88,5 +90,13 @@ offset_bottom = 40.0
 [node name="kirkaIcon" type="Sprite2D" parent="icons"]
 visible = false
 texture = ExtResource("9_jtrot")
+
+[node name="magicTowerIcon" type="Sprite2D" parent="icons"]
+visible = false
+texture = ExtResource("10_wf1kv")
+
+[node name="towerIcon" type="Sprite2D" parent="icons"]
+visible = false
+texture = ExtResource("11_7jm18")
 
 [connection signal="timeout" from="enemyContainer/spawnTimer" to="enemyContainer" method="_on_spawn_timer_timeout"]

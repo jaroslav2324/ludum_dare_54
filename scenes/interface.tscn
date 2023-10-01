@@ -124,3 +124,4 @@ value = 20.0
 [connection signal="button_down" from="Panel/mine" to="." method="_on_mine_button_down"]
 [connection signal="button_up" from="Panel/mine" to="." method="_on_mine_button_up"]
 [connection signal="toggled" from="Panel/mine" to="." method="_on_mine_toggled"]
+[connection signal="toggled" from="Panel/realTowe" to="." method="_on_real_towe_toggled"]
