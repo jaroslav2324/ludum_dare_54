@@ -8,6 +8,8 @@ extends RigidBody2D
 var target
 var aimed_target = false
 
+var ball = preload("res://scenes/ball.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -41,8 +43,15 @@ func _on_radius_body_entered(body):
 	print("Radius entered")
 	print("Body in enemies group", body.is_in_group("enemies"))
 	if body.is_in_group("enemies") and not aimed_target:
+		print("Fire! ", get_global_position())
 		aimed_target = true
 		target = body
+		var instance = ball.instantiate()
+		instance.position = get_global_position()
+		instance.look_at(body.position)
+		#instance.rotation = body.look_at()
+		add_child(instance)
+		instance.apply_central_impulse(Vector2(2000,0).rotated(rotation))
 		$attackPlayer.play()
 		target.apply_damage(tower_damage)
 		$radius/damageTimer.start(tower_attack_speed)

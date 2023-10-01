@@ -30,7 +30,7 @@ offset_bottom = 505.0
 [node name="interface" parent="." instance=ExtResource("5_4fssk")]
 offset_left = -960.0
 offset_top = 300.0
-offset_right = 960.0
+offset_right = 0.0
 offset_bottom = 490.0
 
 [connection signal="currency" from="game" to="interface" method="_on_game_currency"]
