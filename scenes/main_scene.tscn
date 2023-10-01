@@ -14,6 +14,7 @@ script = ExtResource("1_nweo8")
 script = ExtResource("2_gjvdn")
 
 [node name="ambientPlayer" type="AudioStreamPlayer" parent="game"]
+process_mode = 3
 stream = ExtResource("4_5ide7")
 autoplay = true
 
