@@ -61,11 +61,14 @@ position = Vector2(-320, -64)
 position = Vector2(-192, 192)
 
 [node name="gameCamera" type="Camera2D" parent="."]
-scale = Vector2(1.5, 1.5)
 limit_left = -6000
 limit_top = -6000
 limit_right = 6000
 limit_bottom = 6000
+drag_left_margin = 0.3
+drag_right_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
 script = ExtResource("5_1s1ur")
 
 [node name="interface" type="Control" parent="gameCamera"]
