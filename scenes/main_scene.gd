@@ -34,5 +34,7 @@ func _on_interface_magic_tower_toggled(buttonPresed):
 func _on_interface_tower_toggled(buttonPresed):
 	if buttonPresed:
 		get_node("game/icons/towerIcon").visible = true
+		get_node("game").realTowerCanSpawn = true
 	if !buttonPresed:
 		get_node("game/icons/towerIcon").visible = false
+		get_node("game").realTowerCanSpawn = false

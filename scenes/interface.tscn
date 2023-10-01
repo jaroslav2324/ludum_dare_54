@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dq0fe07aj438b"]
+[gd_scene load_steps=18 format=3 uid="uid://dq0fe07aj438b"]
 
 [ext_resource type="Script" path="res://scenes/interface.gd" id="1_hyo4u"]
 [ext_resource type="Texture2D" uid="uid://cxw3j5o6vaq5g" path="res://textures/tower_magic/magikTowerFire.png" id="2_1eteg"]
 [ext_resource type="Texture2D" uid="uid://c68hj7010dq6g" path="res://textures/tower/towerFire.png" id="3_077i8"]
 [ext_resource type="Texture2D" uid="uid://3jhp681vjk8c" path="res://textures/magic/pixIcon.png" id="3_sg4qo"]
+[ext_resource type="Texture2D" uid="uid://bfs6f0tkr5t4x" path="res://textures/icons/mana_fire.png" id="5_2xvcs"]
+[ext_resource type="Texture2D" uid="uid://ceuyotqvaact" path="res://textures/icons/coin_bag.png" id="6_h8pkq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdrxc"]
 bg_color = Color(0.247059, 0.6, 0.6, 0.784314)
@@ -113,12 +115,28 @@ text = "1000"
 [node name="ProgressBar" type="ProgressBar" parent="Panel"]
 layout_mode = 0
 offset_left = 634.0
-offset_top = 129.0
+offset_top = 136.0
 offset_right = 874.0
-offset_bottom = 156.0
+offset_bottom = 163.0
 theme_override_styles/background = SubResource("StyleBoxFlat_m6g6t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2r32a")
 value = 20.0
+
+[node name="mannaIcon" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 104.0
+offset_right = 608.0
+offset_bottom = 185.0
+texture = ExtResource("5_2xvcs")
+
+[node name="coinsIcon" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 503.0
+offset_top = -4.0
+offset_right = 631.0
+offset_bottom = 124.0
+texture = ExtResource("6_h8pkq")
 
 [connection signal="toggled" from="Panel/magicTower" to="." method="_on_magic_tower_toggled"]
 [connection signal="button_down" from="Panel/mine" to="." method="_on_mine_button_down"]

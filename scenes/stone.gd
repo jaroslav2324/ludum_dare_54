@@ -5,7 +5,6 @@ var spell_cast_btn_pressed = false
 #var interfaceMineButton = false
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# for proper mouse handling
@@ -19,8 +18,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("left"):
-		print("spell_cast_btn_pressed ", spell_cast_btn_pressed)
 	if Input.is_action_just_pressed("left") and is_mouse_hovered and spell_cast_btn_pressed:
 		print("stone mine started")
 		spell_cast_btn_pressed = false

@@ -8,8 +8,11 @@ signal play_kupol_anim_sig
 
 signal currency(coins, manna)
 
-var beginCoins = 20
+var beginCoins = 100
 var beginManna = 100
+var magicTowersPrice = 20
+var realTowerPrice = 100
+var karkaPrice = 10 
 
 var coins = beginCoins
 var manna = beginManna
@@ -17,6 +20,7 @@ var manna = beginManna
 var magicTowerCanSpawn = false
 var realTowerCanSpawn = false
 var magicTower = preload("res://scenes/tower_magic.tscn")
+var realTower = preload("res://scenes/tower.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,9 +36,10 @@ func _process(delta):
 	emit_signal("currency", coins, manna)
 	$icons.position = get_global_mouse_position()
 	
-	if magicTowerCanSpawn and Input.is_action_just_pressed("left"):
+	if magicTowerCanSpawn and Input.is_action_just_pressed("left") and manna >= magicTowersPrice:
 		magicTowerSpawn(get_global_mouse_position())
-	pass
+	if realTowerCanSpawn and Input.is_action_just_pressed("left") and coins >= realTowerPrice:
+		realTowerSpawn(get_global_mouse_position())
 
 func _on_spell_mine_stone_btn_pressed_sig():
 	spell_mine_stone_btn_pressed = true
@@ -51,7 +56,15 @@ func _on_play_kupol_anim_sig():
 func magicTowerSpawn(pos):
 	print("try spawn magic tower")
 	var instance = magicTower.instantiate()
-	instance.position = Vector2(floor(pos.x/64)*64, floor(pos.y/64)*64)
+	instance.position = Vector2(floor(pos.x/64+1)*64, floor(pos.y/64 + 1)*64)
 	print("position ",instance.position)
 	add_child(instance)
-	pass
+	manna -= magicTowersPrice
+
+func realTowerSpawn(pos):
+	print("try spawn real tower")
+	var instance = realTower.instantiate()
+	instance.position = Vector2(floor(pos.x/64+1)*64, floor(pos.y/64 + 1)*64)
+	print("position ",instance.position)
+	add_child(instance)
+	coins -= realTowerPrice
