@@ -26,11 +26,13 @@ func _ready():
 
 func _process(delta):
 	emit_signal("currency", coins, manna)
+	$icons.position = get_global_mouse_position()
 	pass
 
 func _on_spell_mine_stone_btn_pressed_sig():
 	spell_mine_stone_btn_pressed = true
 	print("Btn spell cast pressed")
+	
 
 func _on_spell_mine_stone_btn_unpressed_sig():
 	spell_mine_stone_btn_pressed = false

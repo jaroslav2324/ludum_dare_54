@@ -16,5 +16,14 @@ func _process(delta):
 func _on_interface_mine_toggled(buttonPresed):
 	if buttonPresed:
 		get_node("game").spell_mine_stone_btn_pressed_sig.emit()
+		get_node("game/icons/kirkaIcon").visible = true
 	if !buttonPresed:
 		get_node("game").spell_mine_stone_btn_unpressed_sig.emit()
+		get_node("game/icons/kirkaIcon").visible = false
+
+
+func _on_interface_magic_tower_toggled(buttonPresed):
+	if buttonPresed:
+		pass
+	if !buttonPresed:
+		pass

@@ -120,6 +120,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_m6g6t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2r32a")
 value = 20.0
 
+[connection signal="toggled" from="Panel/magicTower" to="." method="_on_magic_tower_toggled"]
 [connection signal="button_down" from="Panel/mine" to="." method="_on_mine_button_down"]
 [connection signal="button_up" from="Panel/mine" to="." method="_on_mine_button_up"]
 [connection signal="toggled" from="Panel/mine" to="." method="_on_mine_toggled"]
