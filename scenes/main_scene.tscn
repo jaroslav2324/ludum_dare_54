@@ -26,3 +26,5 @@ offset_left = -960.0
 offset_top = 300.0
 offset_right = 960.0
 offset_bottom = 490.0
+
+[connection signal="mineButton" from="interface" to="." method="_on_interface_mine_button"]

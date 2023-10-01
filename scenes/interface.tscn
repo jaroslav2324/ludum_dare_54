@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dq0fe07aj438b"]
+[gd_scene load_steps=16 format=3 uid="uid://dq0fe07aj438b"]
 
 [ext_resource type="Script" path="res://scenes/interface.gd" id="1_hyo4u"]
 [ext_resource type="Texture2D" uid="uid://cxw3j5o6vaq5g" path="res://textures/tower_magic/magikTowerFire.png" id="2_1eteg"]
@@ -31,6 +31,12 @@ bg_color = Color(0.792157, 0.792157, 0.792157, 0.784314)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_138nu"]
 bg_color = Color(0.792157, 0.792157, 0.792157, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6g6t"]
+bg_color = Color(0.113725, 0.113725, 0.113725, 0.862745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2r32a"]
+bg_color = Color(0, 0.631373, 0.972549, 0.701961)
 
 [node name="interface" type="Control"]
 layout_mode = 3
@@ -94,3 +100,24 @@ theme_override_icons/unchecked = ExtResource("3_077i8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4nokr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_i4tcj")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_138nu")
+
+[node name="coinCount" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 18.0
+offset_right = 775.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 54
+text = "1000"
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel"]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 129.0
+offset_right = 874.0
+offset_bottom = 156.0
+theme_override_styles/background = SubResource("StyleBoxFlat_m6g6t")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2r32a")
+value = 20.0
+
+[connection signal="button_down" from="Panel/mine" to="." method="_on_mine_button_down"]

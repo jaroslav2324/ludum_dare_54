@@ -11,3 +11,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("exit"):
 		get_node("menu").position =  get_node("game/gameCamera").position
 	get_node("interface").position = get_node("game/gameCamera").position - Vector2(958, -298)
+
+
+func _on_interface_mine_button():
+	print("mine button click main scene see")
+	get_node("game/construction/stone").interfaceMineButton = true

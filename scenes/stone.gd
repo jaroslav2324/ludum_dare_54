@@ -2,7 +2,7 @@ extends Area2D
 
 var is_mouse_hovered = false
 var spell_cast_btn_pressed = false
-
+var interfaceMineButton = false
 
 
 
@@ -20,7 +20,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if Input.is_action_just_pressed("left") and is_mouse_hovered and spell_cast_btn_pressed:
+	if Input.is_action_just_pressed("left") and is_mouse_hovered and spell_cast_btn_pressed and interfaceMineButton:
 		print("stone mine started")
 		spell_cast_btn_pressed = false
 		#var player1_node = get_node("mine/AudioStreamPlayer2D")
