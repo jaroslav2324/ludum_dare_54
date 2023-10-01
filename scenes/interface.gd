@@ -1,7 +1,6 @@
 extends Control
 
-signal mineButton
-signal mineButtonNo
+signal mineToggled(buttonPresed)
 
 var Coins
 var Manna
@@ -17,17 +16,10 @@ func _process(delta):
 	$Panel/ProgressBar.value = Manna
 	pass
 
-
-func _on_mine_button_down():
-	emit_signal("mineButton")
-	print("mine button click")
-
-
 func _on_game_currency(coins, manna):
 	Coins = coins
 	Manna = manna
 
 
-func _on_mine_button_up():
-	emit_signal("mineButtonNo")
-	print("mine button click")
+func _on_mine_toggled(button_pressed):
+	emit_signal("mineToggled", button_pressed)

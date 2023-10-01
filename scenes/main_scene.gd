@@ -13,15 +13,8 @@ func _process(delta):
 	get_node("interface").position = get_node("game/gameCamera").position - Vector2(958, -298)
 
 
-func _on_interface_mine_button():
-	print("mine button click main scene see true")
-	get_node("game").spell_mine_stone_btn_pressed_sig.emit()
-	
-
-
-func _on_interface_mine_button_no():
-	get_node("game").spell_mine_stone_btn_unpressed_sig.emit()
-	print("213")
-	pass
-	#print("mine button click main scene see false")
-	#get_node("game/construction/stone").spell_cast_btn_pressed = false
+func _on_interface_mine_toggled(buttonPresed):
+	if buttonPresed:
+		get_node("game").spell_mine_stone_btn_pressed_sig.emit()
+	if !buttonPresed:
+		get_node("game").spell_mine_stone_btn_unpressed_sig.emit()
