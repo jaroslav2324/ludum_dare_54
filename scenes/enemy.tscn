@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://8fil2wgn2sl2"]
+[gd_scene load_steps=31 format=3 uid="uid://8fil2wgn2sl2"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_f1vui"]
 [ext_resource type="Texture2D" uid="uid://cvfp6fwg01h6h" path="res://textures/fermer/TheCrookedToothedFarmerFightLeft-Sheet.png" id="1_gidsg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c7gkco5yp7yq4" path="res://textures/fermer/TheCrookedToothedFarmerGoLeft-Sheet.png" id="4_lp0g0"]
 [ext_resource type="Texture2D" uid="uid://dc8hr5tqm0kl5" path="res://textures/fermer/TheCrookedToothedFarmerGoRight-Sheet.png" id="5_4u6ww"]
 [ext_resource type="AudioStream" uid="uid://f74e3junwkwd" path="res://sounds/dead_man.wav" id="7_enogo"]
+[ext_resource type="AudioStream" uid="uid://0o7qlynx7iff" path="res://sounds/au.wav" id="8_vaj7f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsa05"]
 atlas = ExtResource("1_gidsg")
@@ -180,7 +181,8 @@ animations = [{
 size = Vector2(64, 66)
 
 [node name="Enemy" type="RigidBody2D" groups=["enemies"]]
-collision_layer = 2
+collision_layer = 3
+collision_mask = 3
 gravity_scale = 0.0
 script = ExtResource("1_f1vui")
 
@@ -196,6 +198,9 @@ shape = SubResource("RectangleShape2D_ownmw")
 
 [node name="deadSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_enogo")
+
+[node name="damageReceivePlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_vaj7f")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

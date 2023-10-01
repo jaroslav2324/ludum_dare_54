@@ -53,6 +53,7 @@ func _process(delta):
 
 func apply_damage(damage: float):
 	farmer_hp -= damage
+	$damageReceivePlayer.play()
 	print("Farmer recieved damage ", damage, ", current hp = ", farmer_hp)
 	if farmer_hp <= 0:
 		farmer_dead = true

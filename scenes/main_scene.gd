@@ -20,6 +20,8 @@ func _on_interface_mine_button():
 
 
 func _on_interface_mine_button_no():
+	get_node("game").spell_mine_stone_btn_unpressed_sig.emit()
+	print("213")
 	pass
 	#print("mine button click main scene see false")
 	#get_node("game/construction/stone").spell_cast_btn_pressed = false
