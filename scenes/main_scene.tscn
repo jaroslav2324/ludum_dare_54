@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ewduxyvi5nvy" path="res://sounds/ambient.wav" id="4_5ide7"]
 [ext_resource type="PackedScene" uid="uid://dq0fe07aj438b" path="res://scenes/interface.tscn" id="5_4fssk"]
 [ext_resource type="PackedScene" uid="uid://cr23mql0truj2" path="res://scenes/dead_menu.tscn" id="6_06me6"]
-[ext_resource type="PackedScene" path="res://scenes/win_menu.tscn" id="7_x8f65"]
+[ext_resource type="PackedScene" uid="uid://dg6wdh753b4n6" path="res://scenes/win_menu.tscn" id="7_x8f65"]
 
 [node name="mainScene" type="Node2D"]
 script = ExtResource("1_nweo8")

@@ -22,7 +22,9 @@ var coins = beginCoins
 var manna = beginManna
 
 var magicTowerCanSpawn = false
+var magicTowerInColl = false
 var realTowerCanSpawn = false
+var realTowerInColl = false
 var magicTower = preload("res://scenes/tower_magic.tscn")
 var realTower = preload("res://scenes/tower.tscn")
 
@@ -38,12 +40,14 @@ func _ready():
 
 func _process(delta):
 	emit_signal("currency", coins, manna)
-	$icons.position = get_global_mouse_position()
+	var pos = get_global_mouse_position()
+	$icons.position = Vector2(floor(pos.x/64+1)*64, floor(pos.y/64+1)*64)
+	#print(magicTowerCanSpawn)
 	
-	if magicTowerCanSpawn and Input.is_action_just_pressed("left") and manna >= magicTowersPrice:
-		magicTowerSpawn(get_global_mouse_position())
+	if magicTowerCanSpawn and magicTowerInColl and Input.is_action_just_pressed("left") and manna >= magicTowersPrice:
+		magicTowerSpawn($icons.position)
 	if realTowerCanSpawn and Input.is_action_just_pressed("left") and coins >= realTowerPrice:
-		realTowerSpawn(get_global_mouse_position())
+		realTowerSpawn($icons.position)
 #	if mannaBuffer > 0:
 #		mannaBuffer -= 1
 #		manna += mannaForMurder
@@ -64,7 +68,7 @@ func _on_play_kupol_anim_sig():
 func magicTowerSpawn(pos):
 	print("try spawn magic tower")
 	var instance = magicTower.instantiate()
-	instance.position = Vector2(floor(pos.x/64+1)*64, floor(pos.y/64 + 1)*64)
+	instance.position = Vector2(floor(pos.x/64)*64, floor(pos.y/64)*64)
 	print("position ",instance.position)
 	get_node("construction").add_child(instance)
 	manna -= magicTowersPrice
@@ -72,7 +76,7 @@ func magicTowerSpawn(pos):
 func realTowerSpawn(pos):
 	print("try spawn real tower")
 	var instance = realTower.instantiate()
-	instance.position = Vector2(floor(pos.x/64+1)*64, floor(pos.y/64 + 1)*64)
+	instance.position = Vector2(floor(pos.x/64)*64, floor(pos.y/64)*64)
 	print("position ",instance.position)
 	get_node("construction").add_child(instance)
 	coins -= realTowerPrice
@@ -106,3 +110,25 @@ func _on_base_base_is_dead():
 signal youWin(pos)
 func _on_win_timer_timeout():
 	emit_signal("youWin", $gameCamera.position)
+
+
+func _on_magic_tower_area_body_entered(body):
+	print("can not")
+	magicTowerInColl = false
+
+
+func _on_magic_tower_area_body_exited(body):
+	magicTowerInColl = false
+	if $icons/magicTowerArea/magicTowerIcon.visible:
+		print("can")
+		magicTowerInColl = true
+
+
+func _on_real_tower_area_body_entered(body):
+	realTowerInColl = false
+
+
+func _on_real_tower_area_body_exited(body):
+	realTowerInColl = false
+	if $icons/magicTowerArea/magicTowerIcon.visible:
+		realTowerInColl = true
