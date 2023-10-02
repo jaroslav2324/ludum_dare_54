@@ -102,3 +102,7 @@ signal base_Is_Dead(pos)
 
 func _on_base_base_is_dead():
 	emit_signal("base_Is_Dead", $gameCamera.position)
+
+signal youWin(pos)
+func _on_win_timer_timeout():
+	emit_signal("youWin", $gameCamera.position)

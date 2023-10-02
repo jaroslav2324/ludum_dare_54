@@ -157,6 +157,9 @@ texture = ExtResource("10_wf1kv")
 visible = false
 texture = ExtResource("11_7jm18")
 
+[node name="winTimer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="containerSayHeDaead" from="enemyContainer" to="." method="_on_enemy_container_container_say_he_daead"]
 [connection signal="sayDirection" from="enemyContainer" to="gameCamera" method="_on_enemy_container_say_direction"]
 [connection signal="timeout" from="enemyContainer/spawnTimer" to="enemyContainer" method="_on_spawn_timer_timeout"]
@@ -171,3 +174,4 @@ texture = ExtResource("11_7jm18")
 [connection signal="addCoins" from="construction/stone4" to="." method="_on_stone_add_coins"]
 [connection signal="payKirka" from="construction/stone4" to="." method="_on_stone_pay_kirka"]
 [connection signal="baseIsDead" from="construction/base" to="." method="_on_base_base_is_dead"]
+[connection signal="timeout" from="winTimer" to="." method="_on_win_timer_timeout"]

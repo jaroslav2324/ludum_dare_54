@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0ejxu0osx5vr"]
+[gd_scene load_steps=8 format=3 uid="uid://c0ejxu0osx5vr"]
 
 [ext_resource type="PackedScene" uid="uid://e6sp7jrrjl8f" path="res://game.tscn" id="1_3hwem"]
 [ext_resource type="PackedScene" uid="uid://cw2pbvjr2acl3" path="res://scenes/menu.tscn" id="1_5urwu"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ewduxyvi5nvy" path="res://sounds/ambient.wav" id="4_5ide7"]
 [ext_resource type="PackedScene" uid="uid://dq0fe07aj438b" path="res://scenes/interface.tscn" id="5_4fssk"]
 [ext_resource type="PackedScene" uid="uid://cr23mql0truj2" path="res://scenes/dead_menu.tscn" id="6_06me6"]
+[ext_resource type="PackedScene" uid="uid://dg6wdh753b4n6" path="res://scenes/win_menu.tscn" id="7_x8f65"]
 
 [node name="mainScene" type="Node2D"]
 script = ExtResource("1_nweo8")
@@ -38,8 +39,13 @@ process_mode = 3
 visible = false
 z_index = 11
 
+[node name="winMenu" parent="." instance=ExtResource("7_x8f65")]
+process_mode = 3
+visible = false
+
 [connection signal="base_Is_Dead" from="game" to="deadMenu" method="_on_game_base_is_dead"]
 [connection signal="currency" from="game" to="interface" method="_on_game_currency"]
+[connection signal="youWin" from="game" to="winMenu" method="_on_game_you_win"]
 [connection signal="finished" from="game/ambientPlayer" to="game" method="_on_ambient_player_finished"]
 [connection signal="magicTowerToggled" from="interface" to="." method="_on_interface_magic_tower_toggled"]
 [connection signal="mineToggled" from="interface" to="." method="_on_interface_mine_toggled"]
