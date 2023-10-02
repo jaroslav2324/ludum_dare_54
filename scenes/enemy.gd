@@ -63,6 +63,7 @@ func apply_damage(damage: float):
 		print("farmerDead")
 		emit_signal("farmerDead")
 		farmer_dead = true
+		$TimerAttack.stop()
 		$deadSoundPlayer.play()
 		$AnimatedSprite2D.play("dead_burst")
 		dead_animation_playing = true

@@ -22,7 +22,8 @@ func _on_restart_pressed():
 	get_tree().reload_current_scene()
 
 
-func _on_game_base_is_dead():
+func _on_game_base_is_dead(pos):
+	position = pos
 	var pauseMode = not get_tree().paused
 	get_tree().paused = pauseMode
 	visible = pauseMode

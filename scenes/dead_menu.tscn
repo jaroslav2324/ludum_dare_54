@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cr23mql0truj2"]
+[gd_scene load_steps=3 format=3 uid="uid://cr23mql0truj2"]
 
 [ext_resource type="Script" path="res://scenes/dead_menu.gd" id="1_3iqaw"]
+[ext_resource type="Texture2D" uid="uid://bs42y6n2eb48y" path="res://textures/icons/telega2.png" id="2_ss4j2"]
 
 [node name="deadMenu" type="Control"]
 layout_mode = 3
@@ -14,12 +15,35 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -500.0
-offset_top = -500.0
-offset_right = -500.0
-offset_bottom = -500.0
+offset_left = -1000.0
+offset_top = -1000.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(1000, 1000)
+scale = Vector2(4, 4)
+texture = ExtResource("2_ss4j2")
+
+[node name="TextEdit" type="TextEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 602.0
+offset_right = 1369.0
+offset_bottom = 738.0
+theme_override_font_sizes/font_size = 36
+text = "The farmers have won, they will sell your 
+artifacts and feed the children."
+editable = false
+
+[node name="exit" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 712.5
+offset_top = 1212.0
+offset_right = 1287.5
+offset_bottom = 1350.0
+theme_override_font_sizes/font_size = 95
+text = "Exit"
 
 [node name="restart" type="Button" parent="Panel"]
 layout_mode = 1
@@ -28,34 +52,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -286.0
-offset_top = -237.0
-offset_right = 289.0
-offset_bottom = -100.0
+offset_left = -287.5
+offset_top = -68.5
+offset_right = 287.5
+offset_bottom = 68.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 93
 text = "Restart"
 
-[node name="exit" type="Button" parent="Panel"]
-layout_mode = 0
-offset_left = 211.0
-offset_top = 640.0
-offset_right = 786.0
-offset_bottom = 777.0
-theme_override_font_sizes/font_size = 95
-text = "Exit"
-
-[node name="TextEdit" type="TextEdit" parent="Panel"]
-layout_mode = 0
-offset_left = 134.0
-offset_top = 82.0
-offset_right = 871.0
-offset_bottom = 218.0
-theme_override_font_sizes/font_size = 36
-text = "The farmers have won, they will sell your 
-artifacts and feed the children."
-editable = false
-
-[connection signal="pressed" from="Panel/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Panel/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/restart" to="." method="_on_restart_pressed"]

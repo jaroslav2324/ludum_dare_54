@@ -98,7 +98,7 @@ func _on_enemy_container_container_say_he_daead():
 	if manna > beginManna: manna = beginManna
 	pass # Replace with function body.
 
-signal base_Is_Dead
+signal base_Is_Dead(pos)
 
 func _on_base_base_is_dead():
-	emit_signal("base_Is_Dead")
+	emit_signal("base_Is_Dead", $gameCamera.position)
