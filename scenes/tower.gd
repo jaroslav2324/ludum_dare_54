@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 
-@export var attack_radius = 256
+@export var attack_radius = 512
 @export var tower_damage = 2
 @export var tower_attack_speed = 1
 

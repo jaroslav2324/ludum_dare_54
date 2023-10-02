@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 
-@export var attack_radius = 350
+@export var attack_radius = 512
 @export var tower_damage = 1
 @export var tower_attack_speed = 1.5
 
@@ -11,7 +11,7 @@ var ball = preload("res://scenes/ball.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.disabled = false
 	
 	input_pickable = true
 	contact_monitor = true
