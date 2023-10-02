@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cuq6u2tjmg56"]
+[gd_scene load_steps=34 format=3 uid="uid://cuq6u2tjmg56"]
 
 [ext_resource type="Texture2D" uid="uid://cgsopr4mnhvlr" path="res://textures/tower_magic/magikTowerIdle-Sheet.png" id="1_bp2na"]
 [ext_resource type="Script" path="res://scenes/tower_magic.gd" id="1_e5uuy"]
@@ -18,6 +18,42 @@ region = Rect2(128, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mruqj"]
 atlas = ExtResource("1_bp2na")
 region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0ehn"]
+atlas = ExtResource("3_j06kd")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vw4k"]
+atlas = ExtResource("3_j06kd")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fyhy"]
+atlas = ExtResource("3_j06kd")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cnql"]
+atlas = ExtResource("3_j06kd")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxfiw"]
+atlas = ExtResource("3_j06kd")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06dkm"]
+atlas = ExtResource("3_j06kd")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueegu"]
+atlas = ExtResource("3_j06kd")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwxbk"]
+atlas = ExtResource("3_j06kd")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ool38"]
+atlas = ExtResource("3_j06kd")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_366xb"]
 atlas = ExtResource("2_5itmv")
@@ -77,6 +113,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_w0ehn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vw4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fyhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cnql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxfiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06dkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueegu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwxbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ool38")
+}],
+"loop": false,
+"name": &"die",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_366xb")
 }],
 "loop": false,
@@ -122,6 +190,12 @@ size = Vector2(134, 135)
 [sub_resource type="CircleShape2D" id="CircleShape2D_spo1d"]
 radius = 128.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5gfp"]
+bg_color = Color(0.764706, 0.203922, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6qpv"]
+bg_color = Color(0, 0.619608, 0.12549, 1)
+
 [node name="towerMagic" type="RigidBody2D"]
 gravity_scale = 0.0
 lock_rotation = true
@@ -130,10 +204,8 @@ attack_radius = 256
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wdq0y")
-animation = &"spawn"
+animation = &"die"
 autoplay = "default"
-frame = 8
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2c1ts")
@@ -154,9 +226,23 @@ shape = SubResource("CircleShape2D_spo1d")
 [node name="attackPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_854r1")
 
+[node name="fadeTimer" type="Timer" parent="."]
+
+[node name="HPBar" type="ProgressBar" parent="."]
+offset_left = 16.0
+offset_top = -65.0
+offset_right = 66.0
+offset_bottom = -53.0
+theme_override_styles/background = SubResource("StyleBoxFlat_f5gfp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e6qpv")
+max_value = 10.0
+value = 2.0
+show_percentage = false
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="radius" to="." method="_on_radius_body_entered"]
 [connection signal="body_exited" from="radius" to="." method="_on_radius_body_exited"]
 [connection signal="timeout" from="radius/damageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="fadeTimer" to="." method="_on_fade_timer_timeout"]

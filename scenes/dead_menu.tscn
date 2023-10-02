@@ -46,12 +46,13 @@ text = "Exit"
 
 [node name="TextEdit" type="TextEdit" parent="Panel"]
 layout_mode = 0
-offset_left = 230.0
-offset_top = 67.0
-offset_right = 780.0
-offset_bottom = 203.0
-theme_override_font_sizes/font_size = 90
-text = "You die. (lol)"
+offset_left = 134.0
+offset_top = 82.0
+offset_right = 871.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 36
+text = "The farmers have won, they will sell your 
+artifacts and feed the children."
 editable = false
 
 [connection signal="pressed" from="Panel/restart" to="." method="_on_restart_pressed"]

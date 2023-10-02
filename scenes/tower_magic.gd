@@ -4,6 +4,9 @@ extends RigidBody2D
 @export var attack_radius = 512
 @export var tower_damage = 1
 @export var tower_attack_speed = 1.5
+@export var towerFadeTime = 1
+@export var maxHelth = 10
+var helth
 
 var target
 var aimed_target = false
@@ -12,6 +15,8 @@ var ball = preload("res://scenes/ball.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# magic tower has no collision
+	helth = maxHelth
+	$fadeTimer.start(towerFadeTime)
 	$CollisionShape2D.disabled = false
 	
 	$AnimatedSprite2D.play("spawn")
@@ -28,8 +33,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$HPBar.value = helth
+	if helth == 0 :
+		magicTowerDie()
 	pass
 
+func magicTowerDie():
+	$AnimatedSprite2D.play("die")
+	pass
 
 func _on_mouse_entered():
 	$radius/radiusSprite.show()
@@ -58,7 +69,7 @@ func _on_radius_body_entered(body):
 func _on_radius_body_exited(body):
 	if body == target:
 		#print("target = body")
-		aimed_target = false		
+		aimed_target = false
 		$radius/damageTimer.stop()
 	pass # Replace with function body.
 
@@ -81,4 +92,10 @@ func fire():
 func _on_animated_sprite_2d_animation_finished():
 	if ($AnimatedSprite2D.animation == "spawn"):
 		$AnimatedSprite2D.play("default")
+	if ($AnimatedSprite2D.animation == "die"):
+		queue_free()
 	pass # Replace with function body.
+
+
+func _on_fade_timer_timeout():
+	helth -= 1
