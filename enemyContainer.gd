@@ -69,4 +69,5 @@ func _on_change_dir_timeout():
 func _on_timeout_timeout():
 	$spawnTimer.start(spawn_rate)
 	$changeDir.start(changeDirT)
+	changeDirT += 1
 	$timeout.stop()

@@ -28,12 +28,13 @@ texture = ExtResource("2_mlv26")
 [node name="TextEdit" type="TextEdit" parent="Panel"]
 layout_mode = 0
 offset_left = 632.0
-offset_top = 602.0
+offset_top = 558.0
 offset_right = 1369.0
 offset_bottom = 738.0
 theme_override_font_sizes/font_size = 36
-text = "The farmers have won, they will sell your 
-artifacts and feed the children."
+text = "The farmers have lost, now there will  
+be famine in the area, and your 
+estate is littered with corpses."
 editable = false
 
 [node name="exit" type="Button" parent="Panel"]
