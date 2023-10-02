@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var damage = 1
+var damage = 2
 var speed = 700
 
 # Called when the node enters the scene tree for the first time.
@@ -14,4 +14,6 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	queue_free()
+	body.apply_damage(damage)
+	#queue_free()
+	pass

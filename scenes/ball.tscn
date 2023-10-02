@@ -28,6 +28,7 @@ radius = 11.1803
 [node name="ball" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 0
+gravity_scale = 0.0
 script = ExtResource("1_85i7x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -39,6 +40,8 @@ frame_progress = 0.233693
 shape = SubResource("CircleShape2D_k477i")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_k477i")

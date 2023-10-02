@@ -24,7 +24,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	#print(get_global_mouse_position())
 	pass
 
 
@@ -48,7 +48,7 @@ func _on_radius_body_entered(body):
 		target = body
 		fire()
 		$attackPlayer.play()
-		target.apply_damage(tower_damage)
+		#target.apply_damage(tower_damage)
 		$radius/damageTimer.start(tower_attack_speed)
 	pass # Replace with function body.
 
@@ -67,17 +67,17 @@ func _on_radius_body_exited(body):
 
 func _on_damage_timer_timeout():
 	$attackPlayer.play()
-	target.apply_damage(tower_damage)
+	#target.apply_damage(tower_damage)
 	fire()
 	pass # Replace with function body.
 
 func fire():
 	var instance = ball.instantiate()
-	instance.position = get_global_position()
-	print("instance.position", instance.position)
-	print("instance.rotation beg", instance.rotation)
+	instance.position = position
+	print("instance.position ", instance.position)
+	print("instance.rotation beg ", instance.rotation)
 	var a = instance.position - target.position
 	instance.rotation = a.angle() + PI
-	add_child(instance)
-	print("instance.rotation", instance.rotation)
-	instance.apply_central_impulse(Vector2(500,0).rotated(instance.rotation))
+	get_tree().get_root().add_child(instance)
+	print("instance.rotation ", instance.rotation)
+	instance.apply_central_impulse(Vector2(700,0).rotated(instance.rotation))

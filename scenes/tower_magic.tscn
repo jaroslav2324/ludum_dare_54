@@ -134,6 +134,8 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2c1ts")
 
 [node name="radius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="radiusSprite" type="Sprite2D" parent="radius"]
 visible = false
