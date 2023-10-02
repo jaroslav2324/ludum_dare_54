@@ -11,7 +11,11 @@ var ball = preload("res://scenes/ball.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# magic tower has no collision
 	$CollisionShape2D.disabled = false
+	
+	$AnimatedSprite2D.play("spawn")
+	
 	
 	input_pickable = true
 	contact_monitor = true
@@ -72,3 +76,9 @@ func fire():
 	instance.rotation = a.angle() + PI
 	get_tree().get_root().add_child(instance)
 	instance.apply_central_impulse(Vector2(700,0).rotated(instance.rotation))
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if ($AnimatedSprite2D.animation == "spawn"):
+		$AnimatedSprite2D.play("default")
+	pass # Replace with function body.

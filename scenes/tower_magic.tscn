@@ -113,7 +113,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"spawn",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2c1ts"]
@@ -126,10 +126,14 @@ radius = 128.0
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_e5uuy")
+attack_radius = 256
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wdq0y")
+animation = &"spawn"
 autoplay = "default"
+frame = 8
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2c1ts")
@@ -152,6 +156,7 @@ stream = ExtResource("6_854r1")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="radius" to="." method="_on_radius_body_entered"]
 [connection signal="body_exited" from="radius" to="." method="_on_radius_body_exited"]
 [connection signal="timeout" from="radius/damageTimer" to="." method="_on_damage_timer_timeout"]
