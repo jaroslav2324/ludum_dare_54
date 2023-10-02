@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var maxHp = 1
+var maxHp = 150
 
 @export var hp: float = maxHp
 signal baseIsDead

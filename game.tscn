@@ -173,7 +173,7 @@ texture = ExtResource("12_tryuh")
 shape = SubResource("RectangleShape2D_bhpvc")
 
 [node name="winTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 600.0
 autostart = true
 
 [connection signal="containerSayHeDaead" from="enemyContainer" to="." method="_on_enemy_container_container_say_he_daead"]
