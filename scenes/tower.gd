@@ -56,7 +56,6 @@ func _on_radius_body_entered(body):
 		aimed_target = true
 		target = body
 		fire()
-		$attackPlayer.play()
 		#target.apply_damage(tower_damage)
 		$radius/damageTimer.start(tower_attack_speed)
 	pass # Replace with function body.
@@ -75,12 +74,13 @@ func _on_radius_body_exited(body):
 
 
 func _on_damage_timer_timeout():
-	$attackPlayer.play()
-	#target.apply_damage(tower_damage)
+
 	fire()
 	pass # Replace with function body.
 
 func fire():
+	$AnimatedSprite2D.play("fire")
+	$attackPlayer.play()
 	var instance = ball.instantiate()
 	instance.position = position
 	var a = instance.position - target.position
@@ -93,4 +93,6 @@ func fire():
 
 func _on_animated_sprite_2d_animation_finished():
 	if ($AnimatedSprite2D.animation == "spawn"):
+		$AnimatedSprite2D.play("default")
+	elif $AnimatedSprite2D.animation == "fire":
 		$AnimatedSprite2D.play("default")
