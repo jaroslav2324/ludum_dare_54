@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://08savjyv0y8v"]
+[gd_scene load_steps=25 format=3 uid="uid://08savjyv0y8v"]
 
 [ext_resource type="Script" path="res://scenes/tower.gd" id="1_pwjn1"]
 [ext_resource type="Texture2D" uid="uid://p06ef7ug321k" path="res://textures/tower/towerIdle-Sheet.png" id="1_u6cj4"]
@@ -122,6 +122,12 @@ size = Vector2(128, 128)
 [sub_resource type="CircleShape2D" id="CircleShape2D_a166d"]
 radius = 128.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhiry"]
+bg_color = Color(0.764706, 0.203922, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2myyh"]
+bg_color = Color(0, 0.619608, 0.12549, 1)
+
 [node name="Tower" type="RigidBody2D"]
 gravity_scale = 0.0
 lock_rotation = true
@@ -156,6 +162,17 @@ stream = ExtResource("5_fmfy6")
 [node name="spawnTimer" type="Timer" parent="."]
 
 [node name="deadTimer" type="Timer" parent="."]
+
+[node name="HPBar" type="ProgressBar" parent="."]
+offset_left = 16.0
+offset_top = -65.0
+offset_right = 66.0
+offset_bottom = -53.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nhiry")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2myyh")
+max_value = 10.0
+value = 2.0
+show_percentage = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

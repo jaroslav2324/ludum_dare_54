@@ -66,7 +66,7 @@ func magicTowerSpawn(pos):
 	var instance = magicTower.instantiate()
 	instance.position = Vector2(floor(pos.x/64+1)*64, floor(pos.y/64 + 1)*64)
 	print("position ",instance.position)
-	add_child(instance)
+	get_node("construction").add_child(instance)
 	manna -= magicTowersPrice
 
 func realTowerSpawn(pos):
@@ -74,7 +74,7 @@ func realTowerSpawn(pos):
 	var instance = realTower.instantiate()
 	instance.position = Vector2(floor(pos.x/64+1)*64, floor(pos.y/64 + 1)*64)
 	print("position ",instance.position)
-	add_child(instance)
+	get_node("construction").add_child(instance)
 	coins -= realTowerPrice
 	pass
 

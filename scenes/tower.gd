@@ -4,6 +4,8 @@ extends RigidBody2D
 @export var attack_radius = 512
 @export var tower_damage = 2
 @export var tower_attack_speed = 1
+var maxHelth = 10
+@export var hp = maxHelth
 
 var target
 var aimed_target = false
@@ -26,8 +28,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#print(get_global_mouse_position())
+	$HPBar.value = hp
+	if hp <= 0 :
+		realTowerDie()
 	pass
 
+func realTowerDie():
+	queue_free()
+	pass
 
 func _on_mouse_entered():
 	$radius/radiusSprite.show()

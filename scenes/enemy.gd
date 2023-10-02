@@ -5,8 +5,9 @@ extends RigidBody2D
 @export var farmer_attack_speed: float = 0.5
 @export var farmer_hp: float = 10
 
+var collider_name
 
-var reached_base = false
+var reached_target = false
 var farmer_dead = false
 var dead_animation_playing = false
 
@@ -27,23 +28,24 @@ func _process(delta):
 		return
 		
 	var  direction_vector: Vector2
-	if not reached_base:
+	if not reached_target:
 		
 		# (0, 0) for base coords (get_node("base".position?)
 		direction_vector = Vector2(0 - position.x, 0 - position.y)
 		
 		var collision = move_and_collide(direction_vector * speed * delta)
 		if collision != null:
-			var collider_name: String = collision.get_collider().name
+			collider_name = collision.get_collider().name
+			#collider_name = "base"
 			# print("enemy collided with ", collider_name)
-			if collider_name == "base":
-				reached_base = true
-				$TimerAttack.start(farmer_attack_speed)
-				$AnimatedSprite2D.stop()
-				if position.x < 0:
-					$AnimatedSprite2D.play("attack_right")
-				else:
-					$AnimatedSprite2D.play("attack_left")
+			#if collider_name == "base":
+			reached_target = true
+			$TimerAttack.start(farmer_attack_speed)
+			$AnimatedSprite2D.stop()
+			if position.x < 0:
+				$AnimatedSprite2D.play("attack_right")
+			else:
+				$AnimatedSprite2D.play("attack_left")
 		else:
 			if position.x < 0:
 				$AnimatedSprite2D.play("go_right")
@@ -74,17 +76,24 @@ func _on_body_entered(body):
 func _on_timer_attack_timeout():
 	# print("Dealed damage to base ", farmer_damage)
 	$dealDamagePlayer.play()
-	var base = get_node("../../construction/base")
-	base.base_hp -= farmer_damage
-	# print("New base hp ", base.base_hp)
-	if base.base_hp <= 0:
+	var str = "../../construction/" + collider_name
+	var attackOn = get_node(str)
+	print(attackOn)
+	if attackOn != null:
+		attackOn.hp -= farmer_damage
+	else:
+		reached_target = false
+		collider_name = ""
 		$TimerAttack.stop()
-		if (position.x < 0):
-			$AnimatedSprite2D.play("go_right")
-		else:
-			$AnimatedSprite2D.play("go_left")
-		$AnimatedSprite2D.set_frame_and_progress(0, 0)
-		$AnimatedSprite2D.stop()
+	# print("New base hp ", base.base_hp)
+#	if attackOn.hp <= 0:
+#		$TimerAttack.stop()
+#		if (position.x < 0):
+#			$AnimatedSprite2D.play("go_right")
+#		else:
+#			$AnimatedSprite2D.play("go_left")
+#		$AnimatedSprite2D.set_frame_and_progress(0, 0)
+#		$AnimatedSprite2D.stop()
 	pass # Replace with function body.
 
 
@@ -95,3 +104,16 @@ func _on_animated_sprite_2d_animation_finished():
 		queue_free()
 	pass # Replace with function body.
 
+
+#if collision != null:
+#			collider_name = collision.get_collider().name
+#			#collider_name = "base"
+#			# print("enemy collided with ", collider_name)
+#			if collider_name == "base":
+#				reached_base = true
+#				$TimerAttack.start(farmer_attack_speed)
+#				$AnimatedSprite2D.stop()
+#				if position.x < 0:
+#					$AnimatedSprite2D.play("attack_right")
+#				else:
+#					$AnimatedSprite2D.play("attack_left")

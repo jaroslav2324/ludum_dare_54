@@ -6,7 +6,7 @@ extends RigidBody2D
 @export var tower_attack_speed = 1.5
 @export var towerFadeTime = 1
 @export var maxHelth = 10
-var helth
+@export var hp = maxHelth
 
 var target
 var aimed_target = false
@@ -15,7 +15,7 @@ var ball = preload("res://scenes/ball.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# magic tower has no collision
-	helth = maxHelth
+	hp = maxHelth
 	$fadeTimer.start(towerFadeTime)
 	$CollisionShape2D.disabled = false
 	
@@ -33,8 +33,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$HPBar.value = helth
-	if helth == 0 :
+	$HPBar.value = hp
+	if hp <= 0 :
 		magicTowerDie()
 	pass
 
@@ -98,4 +98,4 @@ func _on_animated_sprite_2d_animation_finished():
 
 
 func _on_fade_timer_timeout():
-	helth -= 1
+	hp -= 1

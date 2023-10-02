@@ -1,8 +1,8 @@
 extends RigidBody2D
 
-var maxHp = 15
+var maxHp = 150
 
-@export var base_hp: float = maxHp
+@export var hp: float = maxHp
 signal baseIsDead
 
 var print_base_dead: bool = true
@@ -15,8 +15,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$HPBar.value = base_hp
-	if base_hp <= 0 and print_base_dead:
+	$HPBar.value = hp
+	if hp <= 0 and print_base_dead:
 		print_base_dead = false
 		$kupol.hide()
 		$base.play("destroyed")
