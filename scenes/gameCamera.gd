@@ -16,3 +16,18 @@ func _process(delta):
 		position += Vector2(-10, 0)
 	if Input.is_action_pressed("d"):
 		position += Vector2(10, 0)
+
+
+func _on_enemy_container_say_direction(dir):
+	$upArrow.hide()
+	$downArrow.hide()
+	$leftArrow.hide()
+	$rightArrow.hide()
+	if dir == 0:
+		$upArrow.show()
+	if dir == 1:
+		$downArrow.show()
+	if dir == 2:
+		$leftArrow.show()
+	if dir == 3:
+		$rightArrow.show()

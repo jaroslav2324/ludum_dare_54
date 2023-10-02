@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://e6sp7jrrjl8f"]
+[gd_scene load_steps=16 format=3 uid="uid://e6sp7jrrjl8f"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_2rdcs"]
 [ext_resource type="Texture2D" uid="uid://b0v8gmxasw5im" path="res://textures/tiles/grassTiles.png" id="1_ixt1y"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://08savjyv0y8v" path="res://scenes/tower.tscn" id="5_jrybt"]
 [ext_resource type="PackedScene" uid="uid://cuq6u2tjmg56" path="res://scenes/tower_magic.tscn" id="6_wgrxe"]
 [ext_resource type="Texture2D" uid="uid://3jhp681vjk8c" path="res://textures/magic/pixIcon.png" id="9_jtrot"]
+[ext_resource type="Texture2D" uid="uid://x02lw05bvi25" path="res://textures/icons/arrow.png" id="10_gumo0"]
 [ext_resource type="Texture2D" uid="uid://cxw3j5o6vaq5g" path="res://textures/tower_magic/magikTowerFire.png" id="10_wf1kv"]
 [ext_resource type="Texture2D" uid="uid://c68hj7010dq6g" path="res://textures/tower/towerFire.png" id="11_7jm18"]
 
@@ -49,26 +50,38 @@ position = Vector2(-320, -384)
 [node name="spawnTimer" type="Timer" parent="enemyContainer"]
 wait_time = 5.0
 
+[node name="spawnMarkerUp" type="Marker2D" parent="enemyContainer"]
+position = Vector2(0, -1344)
+
+[node name="spawnMarkerDown" type="Marker2D" parent="enemyContainer"]
+position = Vector2(0, 1088)
+
+[node name="spawnMarkerLeft" type="Marker2D" parent="enemyContainer"]
+position = Vector2(-1088, 0)
+
+[node name="spawnMarkerRight" type="Marker2D" parent="enemyContainer"]
+position = Vector2(1088, 0)
+
+[node name="changeDir" type="Timer" parent="enemyContainer"]
+
+[node name="timeout" type="Timer" parent="enemyContainer"]
+
 [node name="construction" type="Node2D" parent="."]
 
 [node name="stone" parent="construction" instance=ExtResource("3_bxnxp")]
 process_priority = 1
-z_index = 1
 position = Vector2(320, 256)
 
 [node name="stone2" parent="construction" instance=ExtResource("3_bxnxp")]
 process_priority = 1
-z_index = 1
 position = Vector2(320, -256)
 
 [node name="stone3" parent="construction" instance=ExtResource("3_bxnxp")]
 process_priority = 1
-z_index = 1
 position = Vector2(-256, -256)
 
 [node name="stone4" parent="construction" instance=ExtResource("3_bxnxp")]
 process_priority = 1
-z_index = 1
 position = Vector2(-256, 256)
 
 [node name="base" parent="construction" instance=ExtResource("3_i402q")]
@@ -106,6 +119,29 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="leftArrow" type="Sprite2D" parent="gameCamera"]
+visible = false
+position = Vector2(-896, 0)
+texture = ExtResource("10_gumo0")
+
+[node name="rightArrow" type="Sprite2D" parent="gameCamera"]
+visible = false
+position = Vector2(896, 0)
+rotation = 3.14159
+texture = ExtResource("10_gumo0")
+
+[node name="upArrow" type="Sprite2D" parent="gameCamera"]
+visible = false
+position = Vector2(0, -384)
+rotation = 1.5708
+texture = ExtResource("10_gumo0")
+
+[node name="downArrow" type="Sprite2D" parent="gameCamera"]
+visible = false
+position = Vector2(0, 384)
+rotation = -1.5708
+texture = ExtResource("10_gumo0")
+
 [node name="icons" type="Node2D" parent="."]
 
 [node name="kirkaIcon" type="Sprite2D" parent="icons"]
@@ -121,7 +157,10 @@ visible = false
 texture = ExtResource("11_7jm18")
 
 [connection signal="containerSayHeDaead" from="enemyContainer" to="." method="_on_enemy_container_container_say_he_daead"]
+[connection signal="sayDirection" from="enemyContainer" to="gameCamera" method="_on_enemy_container_say_direction"]
 [connection signal="timeout" from="enemyContainer/spawnTimer" to="enemyContainer" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="enemyContainer/changeDir" to="enemyContainer" method="_on_change_dir_timeout"]
+[connection signal="timeout" from="enemyContainer/timeout" to="enemyContainer" method="_on_timeout_timeout"]
 [connection signal="addCoins" from="construction/stone" to="." method="_on_stone_add_coins"]
 [connection signal="payKirka" from="construction/stone" to="." method="_on_stone_pay_kirka"]
 [connection signal="addCoins" from="construction/stone2" to="." method="_on_stone_add_coins"]

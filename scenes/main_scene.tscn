@@ -19,13 +19,14 @@ autoplay = true
 [node name="menu" parent="." instance=ExtResource("1_5urwu")]
 process_mode = 3
 visible = false
-z_index = 10
+z_index = 11
 offset_left = -494.0
 offset_top = -495.0
 offset_right = 506.0
 offset_bottom = 505.0
 
 [node name="interface" parent="." instance=ExtResource("5_4fssk")]
+z_index = 10
 offset_left = -960.0
 offset_top = 300.0
 offset_right = 0.0
