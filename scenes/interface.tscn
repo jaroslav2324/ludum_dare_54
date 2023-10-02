@@ -138,8 +138,10 @@ offset_right = 631.0
 offset_bottom = 124.0
 texture = ExtResource("6_h8pkq")
 
+[connection signal="button_down" from="Panel/magicTower" to="." method="_on_magic_tower_button_down"]
 [connection signal="toggled" from="Panel/magicTower" to="." method="_on_magic_tower_toggled"]
 [connection signal="button_down" from="Panel/mine" to="." method="_on_mine_button_down"]
 [connection signal="button_up" from="Panel/mine" to="." method="_on_mine_button_up"]
 [connection signal="toggled" from="Panel/mine" to="." method="_on_mine_toggled"]
+[connection signal="button_down" from="Panel/realTowe" to="." method="_on_real_towe_button_down"]
 [connection signal="toggled" from="Panel/realTowe" to="." method="_on_real_towe_toggled"]
