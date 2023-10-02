@@ -40,10 +40,10 @@ func _on_mouse_exited():
 
 
 func _on_radius_body_entered(body):
-	print("Radius entered")
-	print("Body in enemies group", body.is_in_group("enemies"))
+	#print("Radius entered")
+	#print("Body in enemies group", body.is_in_group("enemies"))
 	if body.is_in_group("enemies") and not aimed_target:
-		print("Fire! ", get_global_position())
+		#print("Fire! ", get_global_position())
 		aimed_target = true
 		target = body
 		fire()
@@ -58,7 +58,7 @@ func _on_radius_body_exited(body):
 	
 	# if body.is_in_group("enemies"):
 	if body == target:
-		print("target = body")
+		#print("target = body")
 		aimed_target = false		
 		$radius/damageTimer.stop()
 		# print("Radius exited")
@@ -74,10 +74,7 @@ func _on_damage_timer_timeout():
 func fire():
 	var instance = ball.instantiate()
 	instance.position = position
-	print("instance.position ", instance.position)
-	print("instance.rotation beg ", instance.rotation)
 	var a = instance.position - target.position
 	instance.rotation = a.angle() + PI
 	get_tree().get_root().add_child(instance)
-	print("instance.rotation ", instance.rotation)
 	instance.apply_central_impulse(Vector2(700,0).rotated(instance.rotation))

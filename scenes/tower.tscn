@@ -48,10 +48,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuqtg"]
-size = Vector2(114, 109)
+size = Vector2(128, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a166d"]
-radius = 128.141
+radius = 128.0
 
 [node name="Tower" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -60,10 +60,9 @@ script = ExtResource("1_pwjn1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v2m48")
-animation = &"fire"
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_fuqtg")
 
 [node name="radius" type="Area2D" parent="."]

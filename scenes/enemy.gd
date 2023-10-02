@@ -10,6 +10,8 @@ var reached_base = false
 var farmer_dead = false
 var dead_animation_playing = false
 
+signal farmerDead
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -54,8 +56,10 @@ func _process(delta):
 func apply_damage(damage: float):
 	farmer_hp -= damage
 	$damageReceivePlayer.play()
-	print("Farmer recieved damage ", damage, ", current hp = ", farmer_hp)
+	#print("Farmer recieved damage ", damage, ", current hp = ", farmer_hp)
 	if farmer_hp <= 0:
+		print("farmerDead")
+		emit_signal("farmerDead")
 		farmer_dead = true
 		$deadSoundPlayer.play()
 		$AnimatedSprite2D.play("dead_burst")

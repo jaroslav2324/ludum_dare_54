@@ -14,6 +14,10 @@ var magicTowersPrice = 20
 var realTowerPrice = 100
 var karkaPrice = 10 
 
+var miningMine = 10
+var mannaForMurder = 5
+var mannaBuffer = 0
+
 var coins = beginCoins
 var manna = beginManna
 
@@ -40,6 +44,10 @@ func _process(delta):
 		magicTowerSpawn(get_global_mouse_position())
 	if realTowerCanSpawn and Input.is_action_just_pressed("left") and coins >= realTowerPrice:
 		realTowerSpawn(get_global_mouse_position())
+#	if mannaBuffer > 0:
+#		mannaBuffer -= 1
+#		manna += mannaForMurder
+#		if manna > beginManna: manna = beginManna
 
 func _on_spell_mine_stone_btn_pressed_sig():
 	spell_mine_stone_btn_pressed = true
@@ -74,3 +82,18 @@ func realTowerSpawn(pos):
 func _on_ambient_player_finished():
 	$ambientPlayer.play()
 	pass 
+
+
+func _on_stone_pay_kirka():
+	manna -= karkaPrice
+
+
+func _on_stone_add_coins():
+	coins += miningMine
+
+
+func _on_enemy_container_container_say_he_daead():
+	print("manna must up")
+	manna += mannaForMurder
+	if manna > beginManna: manna = beginManna
+	pass # Replace with function body.

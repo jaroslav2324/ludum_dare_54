@@ -31,5 +31,12 @@ shape = SubResource("RectangleShape2D_1r017")
 visible = false
 position = Vector2(-10, 17)
 
+[node name="maxWork" type="Timer" parent="."]
+wait_time = 11.0
+
+[node name="addMoney" type="Timer" parent="."]
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="maxWork" to="." method="_on_max_work_timeout"]
+[connection signal="timeout" from="addMoney" to="." method="_on_add_money_timeout"]

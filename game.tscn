@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://e6sp7jrrjl8f"]
+[gd_scene load_steps=15 format=3 uid="uid://e6sp7jrrjl8f"]
 
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_2rdcs"]
 [ext_resource type="Texture2D" uid="uid://b0v8gmxasw5im" path="res://textures/tiles/grassTiles.png" id="1_ixt1y"]
 [ext_resource type="PackedScene" uid="uid://8fil2wgn2sl2" path="res://scenes/enemy.tscn" id="2_ktu4m"]
 [ext_resource type="Script" path="res://enemyContainer.gd" id="2_lhvhl"]
@@ -29,6 +30,7 @@ tile_size = Vector2i(64, 64)
 sources/5 = SubResource("TileSetAtlasSource_lxc20")
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_2rdcs")
 
 [node name="map" type="Node2D" parent="."]
 
@@ -42,7 +44,7 @@ layer_0/tile_data = PackedInt32Array(-196613, 196613, 0, -131077, 131077, 0, -65
 script = ExtResource("2_lhvhl")
 
 [node name="Enemy" parent="enemyContainer" instance=ExtResource("2_ktu4m")]
-position = Vector2(64, -320)
+position = Vector2(-320, -384)
 
 [node name="spawnTimer" type="Timer" parent="enemyContainer"]
 wait_time = 5.0
@@ -52,22 +54,40 @@ wait_time = 5.0
 [node name="stone" parent="construction" instance=ExtResource("3_bxnxp")]
 process_priority = 1
 z_index = 1
-position = Vector2(320, 192)
-
-[node name="base" parent="construction" instance=ExtResource("3_i402q")]
-position = Vector2(0, -64)
+position = Vector2(320, 256)
 
 [node name="stone2" parent="construction" instance=ExtResource("3_bxnxp")]
 process_priority = 1
 z_index = 1
-position = Vector2(384, -192)
+position = Vector2(320, -256)
+
+[node name="stone3" parent="construction" instance=ExtResource("3_bxnxp")]
+process_priority = 1
+z_index = 1
+position = Vector2(-256, -256)
+
+[node name="stone4" parent="construction" instance=ExtResource("3_bxnxp")]
+process_priority = 1
+z_index = 1
+position = Vector2(-256, 256)
+
+[node name="base" parent="construction" instance=ExtResource("3_i402q")]
+position = Vector2(0, -64)
 
 [node name="Tower" parent="construction" instance=ExtResource("5_jrybt")]
-position = Vector2(-320, -64)
+position = Vector2(-256, 0)
+
+[node name="Tower3" parent="construction" instance=ExtResource("5_jrybt")]
+position = Vector2(0, -256)
+
+[node name="Tower4" parent="construction" instance=ExtResource("5_jrybt")]
+position = Vector2(0, 192)
+
+[node name="Tower2" parent="construction" instance=ExtResource("5_jrybt")]
+position = Vector2(320, 0)
 
 [node name="TowerMagic" parent="construction" instance=ExtResource("6_wgrxe")]
-process_mode = 4
-position = Vector2(-192, 192)
+position = Vector2(-512, 0)
 
 [node name="gameCamera" type="Camera2D" parent="."]
 limit_left = -6000
@@ -100,4 +120,13 @@ texture = ExtResource("10_wf1kv")
 visible = false
 texture = ExtResource("11_7jm18")
 
+[connection signal="containerSayHeDaead" from="enemyContainer" to="." method="_on_enemy_container_container_say_he_daead"]
 [connection signal="timeout" from="enemyContainer/spawnTimer" to="enemyContainer" method="_on_spawn_timer_timeout"]
+[connection signal="addCoins" from="construction/stone" to="." method="_on_stone_add_coins"]
+[connection signal="payKirka" from="construction/stone" to="." method="_on_stone_pay_kirka"]
+[connection signal="addCoins" from="construction/stone2" to="." method="_on_stone_add_coins"]
+[connection signal="payKirka" from="construction/stone2" to="." method="_on_stone_pay_kirka"]
+[connection signal="addCoins" from="construction/stone3" to="." method="_on_stone_add_coins"]
+[connection signal="payKirka" from="construction/stone3" to="." method="_on_stone_pay_kirka"]
+[connection signal="addCoins" from="construction/stone4" to="." method="_on_stone_add_coins"]
+[connection signal="payKirka" from="construction/stone4" to="." method="_on_stone_pay_kirka"]
