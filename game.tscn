@@ -170,3 +170,4 @@ texture = ExtResource("11_7jm18")
 [connection signal="payKirka" from="construction/stone3" to="." method="_on_stone_pay_kirka"]
 [connection signal="addCoins" from="construction/stone4" to="." method="_on_stone_add_coins"]
 [connection signal="payKirka" from="construction/stone4" to="." method="_on_stone_pay_kirka"]
+[connection signal="baseIsDead" from="construction/base" to="." method="_on_base_base_is_dead"]

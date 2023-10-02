@@ -81,3 +81,8 @@ func fire():
 	instance.apply_central_impulse(Vector2(700,0).rotated(instance.rotation))
 
 
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if ($AnimatedSprite2D.animation == "spawn"):
+		$AnimatedSprite2D.play("default")

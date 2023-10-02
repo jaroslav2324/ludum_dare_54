@@ -3,6 +3,7 @@ extends RigidBody2D
 var maxHp = 15
 
 @export var base_hp: float = maxHp
+signal baseIsDead
 
 var print_base_dead: bool = true
 
@@ -20,6 +21,7 @@ func _process(delta):
 		$kupol.hide()
 		$base.play("destroyed")
 		print("Base dead")
+		emit_signal("baseIsDead")
 	pass
 
 
