@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://08savjyv0y8v"]
+[gd_scene load_steps=23 format=3 uid="uid://08savjyv0y8v"]
 
 [ext_resource type="Script" path="res://scenes/tower.gd" id="1_pwjn1"]
 [ext_resource type="Texture2D" uid="uid://p06ef7ug321k" path="res://textures/tower/towerIdle-Sheet.png" id="1_u6cj4"]
 [ext_resource type="Texture2D" uid="uid://c68hj7010dq6g" path="res://textures/tower/towerFire.png" id="2_le3lc"]
 [ext_resource type="Texture2D" uid="uid://fxaqakqum3p0" path="res://textures/attackRad.png" id="4_1lwpg"]
+[ext_resource type="Texture2D" uid="uid://cfacgm4gv120t" path="res://textures/tower/TowerSpawn-Sheet.png" id="4_rdo21"]
 [ext_resource type="AudioStream" uid="uid://dpv43wi61qctt" path="res://sounds/tower_attack.wav" id="5_fmfy6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6fba"]
@@ -21,6 +22,42 @@ region = Rect2(256, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_87rqo"]
 atlas = ExtResource("2_le3lc")
 region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukxyt"]
+atlas = ExtResource("4_rdo21")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b662"]
+atlas = ExtResource("4_rdo21")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epgi8"]
+atlas = ExtResource("4_rdo21")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq025"]
+atlas = ExtResource("4_rdo21")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvnt4"]
+atlas = ExtResource("4_rdo21")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhsut"]
+atlas = ExtResource("4_rdo21")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xye72"]
+atlas = ExtResource("4_rdo21")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuet1"]
+atlas = ExtResource("4_rdo21")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjjxh"]
+atlas = ExtResource("4_rdo21")
+region = Rect2(1024, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v2m48"]
 animations = [{
@@ -45,6 +82,38 @@ animations = [{
 "loop": false,
 "name": &"fire",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukxyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b662")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epgi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq025")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvnt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhsut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xye72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuet1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjjxh")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuqtg"]
@@ -60,7 +129,10 @@ script = ExtResource("1_pwjn1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v2m48")
+animation = &"spawn"
 autoplay = "default"
+frame = 8
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fuqtg")
@@ -80,6 +152,10 @@ shape = SubResource("CircleShape2D_a166d")
 
 [node name="attackPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_fmfy6")
+
+[node name="spawnTimer" type="Timer" parent="."]
+
+[node name="deadTimer" type="Timer" parent="."]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -19,6 +19,7 @@ func _ready():
 	# print("rad scale ", radius_scale)
 	$radius/radiusSprite.apply_scale(radius_scale)
 	$radius/radiusCollisionShape.apply_scale(radius_scale)
+	$AnimatedSprite2D.play("spawn")
 	pass # Replace with function body.
 
 
@@ -78,3 +79,5 @@ func fire():
 	instance.rotation = a.angle() + PI
 	get_tree().get_root().add_child(instance)
 	instance.apply_central_impulse(Vector2(700,0).rotated(instance.rotation))
+
+
